@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>xhtmlfinal</title>
+        <link rel="stylesheet" href="main.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      // var search = prompt("Search for anything:");
+      var id;
+      $(".instagram").addClass("loader");
+      var url = "https://extraction.import.io/query/runtime/3c9433d7-9822-4873-8c7b-0841faeb9d6f?_apikey=172624aac6cf49de92d443561e2e06009df06765ff844288038b31da4491e96fbbad60e070313a6a620bf93760bb75ec474d3bee156618a363855e3141785b8984f4ab02926b3cdbcb4289eaa1f75964&url=http%3A%2F%2Fkublaykahn.tumblr.com";
+      $.getJSON(url, function(response){
+        console.log(response.extractorData.data[0].group);
+
+        var items = response.extractorData.data[0].group;
+
+        for (var i=0; i<items.length; i++){
+
+          var flickrSearchURL = "http://cooper-union-flickr-proxy.herokuapp.com/search?text="+items[i].cap[0].text+"&count=10";
+
+          (function(items){
+            $.getJSON(flickrSearchURL, function(response){
+
+              $("body").append("<p>"+items.cap[0].text+"</p>")
+              $("body").append("<a href="+response.photos.photo[0].url+"> <img src="+items.photo[0].src+" /></a>")
+
+
+
+
+
+
+            });
+          })(items[i]);
+
+        }
+
+      });
+
+    });
+    </script>
+  </head>
+  <body>
+<style>
+      body {
+          background-color:red;
+
+
+
+          	margin: 0;
+          	padding: 0;
+
+
+      }
+
+
+      h1{ font-family: impact;
+        font-size: 80px;
+        color:#FFFF00 ;
+        text-align:center;
+        text-shadow: 2px 2px #CCFF99  ;
+        background-color: red;
+	 position: relative;
+  }
+      p {
+        font-family:75% georgia, sans-serif;
+        font-size: 50px;
+        color: #CCFF99;
+        font-weight:bold;
+        text-align:center;
+        position: relative;
+      }
+
+     h2{
+       font-family: georgia;
+       font-weight: bolder;
+       font-size: 25px;
+       color: #FFFF00;
+       text-align: center;
+       position: relative;
+     }
+     img{
+       display: block;
+    margin-left: auto;
+    margin-right: auto;
+    bottom:50px;
+
+         width: 450px;
+         position:relative;
+         align-content: center;
+
+     }
+
+     div{ align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    padding: 2px 6px 3px;
+    box-sizing: border-box;
+        }
+
+
+        .sidebar {
+        	margin-left: 600px;
+        	position: absolute;
+        	top: 0;
+        	right: 0;
+        	}
+        .sidebar .wrapper {
+        	font: 10px verdana, sans-serif;
+        	background: transparent url(http://csszengarden.com/001/paper-bg.jpg) top left repeat-y;
+        	padding: 10px;
+        	margin-top: 150px;
+        	width: 130px;
+        	}
+        .sidebar h3.select {
+        	background: transparent url(http://csszengarden.com/001/h3.gif) no-repeat top left;
+        	margin: 10px 0 5px 0;
+        	width: 97px;
+        	height: 16px;
+
+        	text-indent: 100%;
+        	white-space: nowrap;
+        	overflow: hidden;
+        	}
+        .sidebar h3.archives {
+        	background: transparent url(http://csszengarden.com/001/h5.gif) no-repeat top left;
+        	margin: 25px 0 5px 0;
+        	width:57px;
+        	height: 14px;
+
+        	text-indent: 100%;
+        	white-space: nowrap;
+        	overflow: hidden;
+        	}
+        .sidebar h3.resources {
+        	background: transparent url(http://csszengarden.com/001/h6.gif) no-repeat top left;
+        	margin: 25px 0 5px 0;
+        	width:63px;
+        	height: 10px;
+
+        	text-indent: 100%;
+        	white-space: nowrap;
+        	overflow: hidden;
+        	}
+
+
+        .sidebar ul {
+        	margin: 0;
+        	padding: 0;
+        	}
+        .sidebar li {
+        	line-height: 1.3em;
+        	background: transparent url(http://csszengarden.com/001/cr1.gif) no-repeat top center;
+        	display: block;
+        	padding-top: 5px;
+        	margin-bottom: 5px;
+        	list-style-type: none;
+        	}
+        .sidebar li a:link {
+        	color: #988F5E;
+        	}
+        .sidebar li a:visited {
+        	color: #B3AE94;
+        	}
+
+
+
+  </style>
+
+    <h1>Slices of Fruit.</h1>
+        <h2>Website for your daily slice of fruit</h2>
+
+        <aside class="sidebar" role="complementary">
+      		<div class="wrapper">
+
+      			<div class="fruit-selection" id="fruit-selection">
+      				<h4 class="select">Select a Fruit</h4>
+      				<nav role="navigation">
+      					<ul>
+      					<li>
+      					<a href="https://en.wikipedia.org/wiki/Orange_(fruit)" class="fruit-name">Orange</a>
+      					</li>					<li>
+      						<a href="https://en.wikipedia.org/wiki/Mango" class="fruit-name">Mango</a>
+      					</li>					<li>
+      					<a href="https://en.wikipedia.org/wiki/Watermelon" class="fruit-name">Watermelon</a>
+      					</li>					<li>
+      					<a href="https://en.wikipedia.org/wiki/Kiwifruit" class="fruit-name">Kiwi</a>
+      					</li>					<li>
+      						<a href="https://en.wikipedia.org/wiki/Banana" class="fruit-name">Banana</a>
+      					</li>					<li>
+      					<a href="https://en.wikipedia.org/wiki/Pineapple" class="fruit-name">Pineapple</a>
+              </li>					</ul>
+      				</nav>
+      			</div>
+
+      			<div class="fruit-archives" id="fruit-archives">
+      				<h3>Slices</h3>
+      				<nav role="navigation">
+      					<ul>
+
+      						<li class="viewall">
+      							<a href="http://kublaykahn.tumblr.com/" title="View every slice of fruit">
+      								View All Slices							</a>
+      						</li>
+      					</ul>
+      				</nav>
+      			</div>
+
+      			<div class="fruit-resources" id="fruit-resources">
+      				<h5 class="resources">Resources:</h>
+      				<ul>
+
+      					<li class="resources">
+      						<a href="http://www.erinsparling.com/.plan" title="Teacher">
+      							<abbr title="material used">XHTML</a>
+      					</li>
+
+      					</li>
+      				</ul>
+      			</div>
+      		</div>
+      	</aside>
+
+
+
+
+  </body>
+</html>
